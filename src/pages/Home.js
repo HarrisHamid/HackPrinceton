@@ -27,14 +27,17 @@ const Home = () => {
 
   const stories = [
     {
+      id: 1,
       title: "The Adventure Begins",
       imageUrl: "https://example.com/image1.jpg",
     },
     {
+      id: 2,
       title: "A Journey Through Time",
       imageUrl: "https://example.com/image2.jpg",
     },
     {
+      id: 3,
       title: "Mysteries of the Unknown",
       imageUrl: "https://example.com/image3.jpg",
     },
@@ -56,7 +59,7 @@ const Home = () => {
           <Row gutter={[16, 16]}>
             {stories.map((story, index) => (
               <Col key={index} xs={24} sm={12} md={8} lg={6}>
-                <StoryCard title={story.title} imageUrl={story.imageUrl} />
+                <StoryCard title={story.title} imageUrl={story.imageUrl} storyId={story.id} />
               </Col>
             ))}
           </Row>
