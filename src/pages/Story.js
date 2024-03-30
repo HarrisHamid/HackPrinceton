@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Button } from "antd";
+import { PlayCircleOutlined } from "@ant-design/icons";
 import { getFile, getStoryById } from "../api/lib/Story";
+import StoryContainer from "../components/StoryContainer";
 
 const Story = () => {
   const [enText, setEnText] = useState("");
   const [chrText, setChrText] = useState("");
+  const { storyId } = useParams();
 
   useEffect(() => {
     const fetchStory = async () => {
@@ -36,15 +40,26 @@ const Story = () => {
     };
 
     fetchStory();
-  });
+  }, [storyId]); // Added dependency array to prevent infinite loop
 
-  const { storyId } = useParams();
+  // Placeholder function for play button click
+  const onPlayClick = () => {
+    console.log("Play button clicked");
+    // Here you would add functionality for what happens when the play button is clicked
+  };
+
   return (
-    <div>
-      <h1>English</h1>
-      <p>{enText}</p>
-      <h1>Cherokee</h1>
-      <p>{chrText}</p>
+    <div className="story-container">
+      <StoryContainer language="English" text={enText} />
+      <StoryContainer language="Cherokee" text={chrText} />
+      <Button
+        type="primary"
+        shape="circle"
+        icon={<PlayCircleOutlined />}
+        size="large"
+        onClick={onPlayClick}
+        style={{ position: "absolute", right: "20px", bottom: "20px" }}
+      />
     </div>
   );
 };
