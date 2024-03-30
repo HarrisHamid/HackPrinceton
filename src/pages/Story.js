@@ -40,18 +40,16 @@ const Story = () => {
     };
 
     fetchStory();
-  }, [storyId]); // Added dependency array to prevent infinite loop
+  }, [storyId]);
 
-  // Placeholder function for play button click
   const onPlayClick = () => {
     console.log("Play button clicked");
-    // Here you would add functionality for what happens when the play button is clicked
   };
 
   return (
     <div className="story-container">
-      <StoryContainer language="English" text={enText} />
       <StoryContainer language="Cherokee" text={chrText} />
+      <StoryContainer language="English" text={enText} />
       <Button
         type="primary"
         shape="circle"
