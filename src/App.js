@@ -1,6 +1,10 @@
 import React from 'react';
-import CardComponent from './components/CardComponent';
-import './App.css';
+import { ConfigProvider } from 'antd';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Admin from './pages/Admin';
+import Story from './pages/Story';
+import NotFound from './pages/404';
 
 function App() {
   // Function to handle card clicks
@@ -10,16 +14,16 @@ function App() {
   };
 
   return (
-    <div className="main-container">
-      <div className="header">
-        <h1>polyglot</h1>
+    <ConfigProvider theme={{token: {colorPrimary: '#00b96b'}}}>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/story/:storyId" element={<Story />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
-      <div className="grid-container">
-        {[1, 2, 3, 4].map((number) => (
-          <CardComponent key={number} number={number} onClick={handleCardClick} />
-        ))}
-      </div>
-    </div>
+    </ConfigProvider>
   );
 }
 
