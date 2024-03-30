@@ -1,27 +1,23 @@
-import React, { useState } from 'react';
 import { Card } from 'antd';
 import { useNavigate } from 'react-router';
 import { useAuth0 } from "@auth0/auth0-react";
-import NotLoggedIn from './NotLoggedIn';
 
 const { Meta } = Card;
 
 const StoryCard = ({ title, imageUrl, storyId }) => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth0();
-  const [showAlert, setShowAlert] = useState(false);
 
   const handleCardClick = () => {
     if (isAuthenticated) {
       navigate(`/story/${storyId}`);
     } else {
-      setShowAlert(true); // Set showAlert to true to display the error message
+      alert("Rquire login to view story")
     }
   };
 
   return (
     <>
-      {showAlert && <NotLoggedIn />}
       <Card
         hoverable
         style={{ width: 240 }}
