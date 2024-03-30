@@ -1,33 +1,25 @@
-// Assuming you've updated your Home component file
 import React, { useState } from "react";
-import { Layout, Button } from "antd";
-import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { Layout } from "antd";
 import { useNavigate } from "react-router";
 import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
+  const toggleSidebar = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <Layout>
       <Sidebar collapsed={collapsed} onCollapse={setCollapsed} navigate={navigate} />
       <Layout>
-        <Header>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
-        </Header>
-        <Content>
+        <Navbar isSidebarCollapsed={collapsed} toggleSidebar={toggleSidebar} />
+        <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
           Content
         </Content>
       </Layout>
