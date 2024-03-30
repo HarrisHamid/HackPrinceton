@@ -1,38 +1,19 @@
+// Assuming you've updated your Home component file
 import React, { useState } from "react";
-import { Layout, Menu, Button } from "antd";
-import { UserOutlined, MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
+import { Layout, Button } from "antd";
+import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router";
+import Sidebar from './Sidebar'; // Make sure the path is correct
 
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 
 const Home = () => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
-//   const {
-//     token: { colorBgContainer },
-//   } = theme.useToken();
-  const handleClickHome = () => {
-    navigate('/');
-  }
 
   return (
     <Layout>
-      <Sider trigger={null} collapsible collapsed={collapsed}>
-        <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'Home',
-              onClick: handleClickHome,
-            },
-          ]}
-        />
-      </Sider>
+      <Sidebar collapsed={collapsed} onCollapse={setCollapsed} navigate={navigate} />
       <Layout>
         <Header>
           <Button
