@@ -1,6 +1,6 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { BookFilled, UserOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 
@@ -18,10 +18,16 @@ const Sidebar = ({ collapsed, navigate }) => {
         items={[
           {
             key: '1',
-            icon: <UserOutlined />,
-            label: 'Home',
+            icon: <BookFilled />,
+            label: 'Stories',
             onClick: handleClickHome,
           },
+          {
+            key: '2',
+            icon: <UserOutlined />,
+            label: 'Progress',
+            onClick: () => navigate('/progress'),
+          }
         ]}
       />
     </Sider>
