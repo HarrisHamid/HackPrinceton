@@ -4,7 +4,7 @@ import { UserOutlined } from '@ant-design/icons';
 
 const { Sider } = Layout;
 
-const Sidebar = ({ collapsed, onCollapse, navigate }) => {
+const Sidebar = ({ collapsed, navigate }) => {
   const handleClickHome = () => {
     navigate('/');
   };

@@ -14,12 +14,22 @@ const Home = () => {
     setCollapsed(!collapsed);
   };
 
+  const layoutStyle = {
+    minHeight: '100vh',
+  };
+  const contentStyle = {
+    margin: '24px 16px',
+    padding: 24,
+    background: '#fff',
+    minHeight: 'auto',
+  };
+
   return (
-    <Layout>
+    <Layout style={layoutStyle}>
       <Sidebar collapsed={collapsed} onCollapse={setCollapsed} navigate={navigate} />
       <Layout>
         <Navbar isSidebarCollapsed={collapsed} toggleSidebar={toggleSidebar} />
-        <Content style={{ margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280 }}>
+        <Content style={contentStyle}>
           Content
         </Content>
       </Layout>
