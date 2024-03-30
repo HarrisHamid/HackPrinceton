@@ -1,20 +1,21 @@
 import { Card } from 'antd';
 import { useNavigate } from 'react-router';
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import Meta from "antd/es/card/Meta";
 
 
 const StoryCard = ({ title, image, storyId }) => {
   const navigate = useNavigate();
 
-  const { isAuthenticated } = useAuth0();
+  // const { isAuthenticated } = useAuth0();
 
   const handleCardClick = () => {
-    if (isAuthenticated) {
-      navigate(`/story/${storyId}`);
-    } else {
-      alert("Require login to view story")
-    }
+    navigate(`/story/${storyId}`);
+    // if (isAuthenticated) {
+    //   navigate(`/story/${storyId}`);
+    // } else {
+    //   alert("Require login to view story")
+    // }
   };
 
   return (
