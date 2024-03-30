@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Layout, Button } from "antd";
 import { MenuUnfoldOutlined, MenuFoldOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router";
-import Sidebar from './Sidebar'; // Make sure the path is correct
+import Sidebar from "../components/Sidebar";
 
 const { Header, Content } = Layout;
 
