@@ -19,7 +19,7 @@ const Navbar = ({ isSidebarCollapsed, toggleSidebar }) => {
         }}
       />
       <div style={{ marginLeft: '20px' }}>
-        <h2>Storybook</h2>
+        <h2>Polyglot</h2>
       </div>
       <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
         <LoginButton />

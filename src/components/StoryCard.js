@@ -13,7 +13,7 @@ const StoryCard = ({ title, image, storyId }) => {
     if (isAuthenticated) {
       navigate(`/story/${storyId}`);
     } else {
-      alert("Rquire login to view story")
+      alert("Require login to view story")
     }
   };
 
