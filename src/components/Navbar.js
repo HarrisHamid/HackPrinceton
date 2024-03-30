@@ -8,10 +8,7 @@ const { Header } = Layout;
 
 const Navbar = ({ isSidebarCollapsed, toggleSidebar }) => {
   return (
-    <Header style={{ padding: 0, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div style={{ marginLeft: '20px' }}>
-        <h2>Storybook</h2>
-      </div>
+    <Header style={{ padding: 0, background: '#fff', display: 'flex', alignItems: 'center' }}>
       <Button
         type="text"
         icon={isSidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -21,8 +18,13 @@ const Navbar = ({ isSidebarCollapsed, toggleSidebar }) => {
           fontSize: '16px',
         }}
       />
-      <LoginButton />
-      <LogoutButton />
+      <div style={{ marginLeft: '20px' }}>
+        <h2>Storybook</h2>
+      </div>
+      <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+        <LoginButton />
+        <LogoutButton />
+      </div>
     </Header>
   );
 };
