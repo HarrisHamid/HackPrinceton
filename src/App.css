@@ -5,10 +5,9 @@ html, body {
 
 body {
   display: flex;
-  justify-content: center; /* Aligns horizontally */
-  align-items: center; /* Aligns vertically */
+  justify-content: center; 
+  align-items: center; 
 }
-
 
 .main-container {
   display: flex;
@@ -29,17 +28,32 @@ body {
 }
 
 .grid-container {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 20px;
-  overflow-x: auto;
-  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* This will space out your cards nicely */
+  align-items: stretch; /* This will make sure that all cards stretch to the same height */
+  gap: 20px; /* This adds space between the cards */
 }
 
 .card {
-  background-color: #f6eeee;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  color: black; 
+  padding: 20px; 
+  border-radius: 20px; 
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12); 
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: space-between; 
+  width: 300px; 
+  height: 400px; 
+  overflow: hidden; 
+  text-align: left; 
+  transition: transform 0.2s;
 }
+
+.card:hover {
+  transform: scale(1.03); /* Slightly enlarge the card on hover */
+}
+
+
+
