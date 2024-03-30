@@ -28,6 +28,10 @@ export const getStoryById = async (storyId) => {
 
 export const createStory = async (data) => {
     try {
+        // Set content type to multipart/form-data
+        data.headers = {
+            "Content-Type": "multipart/form-data"
+        }
         const response = await request("post", `/stories`, data);
         return response
     } catch (error) {
