@@ -21,7 +21,9 @@ export const getAllStories = async () => {
 
 export const getStoryById = async (storyId) => {
     try {
-        const response = await request("get", `/stories/${storyId}`);
+        const response = await fetch(`http://localhost:8000/story/${storyId}`, {
+            method: "GET",
+        });
         return response
     } catch (error) {
         if (error.response) {

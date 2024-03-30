@@ -31,10 +31,8 @@ const Home = () => {
           }
           const imageBlob = await response.blob();
           const imageUrl = URL.createObjectURL(imageBlob);
-          console.log("Fetched image:", imageUrl);
           return { storyId: story._id, src: imageUrl };
         } catch (error) {
-          console.error("Error fetching image:", error);
           return { storyId: story._id, src: "" };
         }
       });

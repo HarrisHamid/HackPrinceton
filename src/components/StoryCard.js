@@ -6,8 +6,6 @@ import Meta from "antd/es/card/Meta";
 const StoryCard = ({ title, image, storyId }) => {
   const navigate = useNavigate();
 
-  console.log('StoryCard:', title, image, storyId);
-
   return (
     <Card
       hoverable
