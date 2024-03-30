@@ -7,12 +7,6 @@ import Story from './pages/Story';
 import NotFound from './pages/404';
 
 function App() {
-  // Function to handle card clicks
-  const handleCardClick = (cardNumber) => {
-    alert(`Card ${cardNumber} clicked!`);
-    // You can also perform other actions here
-  };
-
   return (
     <ConfigProvider theme={{token: {colorPrimary: '#00b96b'}}}>
       <div>
