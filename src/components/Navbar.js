@@ -1,6 +1,8 @@
 import React from 'react';
 import { Layout, Button } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
+import LoginButton from './LoginButton';
+import LogoutButton from './LogoutButton';
 
 const { Header } = Layout;
 
@@ -15,10 +17,12 @@ const Navbar = ({ isSidebarCollapsed, toggleSidebar }) => {
         icon={isSidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         onClick={toggleSidebar}
         style={{
-          marginRight: '20px',
+          marginLeft: '20px',
           fontSize: '16px',
         }}
       />
+      <LoginButton />
+      <LogoutButton />
     </Header>
   );
 };
