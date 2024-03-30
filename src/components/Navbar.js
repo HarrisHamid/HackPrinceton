@@ -7,7 +7,9 @@ const { Header } = Layout;
 const Navbar = ({ isSidebarCollapsed, toggleSidebar }) => {
   return (
     <Header style={{ padding: 0, background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-      <div style={{ marginLeft: '20px' }}>My Application</div>
+      <div style={{ marginLeft: '20px' }}>
+        <h2>Storybook</h2>
+      </div>
       <Button
         type="text"
         icon={isSidebarCollapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
