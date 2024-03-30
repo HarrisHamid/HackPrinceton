@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseUrl: `http://18.220.29.105`
+    baseUrl: `http://127.0.0.1:8000/`
 })
 
 const request = async (method, url, data) => {

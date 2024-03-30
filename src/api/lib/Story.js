@@ -4,7 +4,12 @@ const API_NAME = "Pyglot API"
 
 export const getAllStories = async () => {
     try {
-        const response = await request("get", "/stories");
+        const response = await fetch(`http://localhost:8000/stories/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
         return response
     } catch (error) {
         if (error.response) {
@@ -63,5 +68,33 @@ export const deleteStory = async (storyId) => {
             throw new Error(`${API_NAME}: ${error.response.data.message}`)
         }
         throw new Error(`${API_NAME}: ${error.message}`)        
+    }
+}
+
+export const getFile = async (fileId) => {
+    try {
+        const response = await fetch(`http://localhost:8000/file/${fileId}`, {
+            method: "GET",
+        });
+        return response
+    } catch (error) {
+        if (error.response) {
+            throw new Error(`${API_NAME}: ${error.response.data.message}`)
+        }
+        throw new Error(`${API_NAME}: ${error.message}`)
+    }
+}
+
+export const getImage = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:8000/resource/${id}`, {
+            method: "GET",
+        });
+        return response
+    } catch (error) {
+        if (error.response) {
+            throw new Error(`${API_NAME}: ${error.response.data.message}`)
+        }
+        throw new Error(`${API_NAME}: ${error.message}`)
     }
 }
