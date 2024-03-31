@@ -73,6 +73,20 @@ const Home = () => {
     gap: "16px",
   };
 
+  const renderStoryCardsByGenre = (genre) => {
+    return stories.filter(story => story.genre === genre).map((story) => (
+      <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
+        <StoryCard
+          title={story.title}
+          description={story.description}
+          image={images.find((img) => img.storyId === story._id)}
+          navigate={navigate}
+          storyId={story._id}
+        />
+      </Col>
+    ));
+  };
+
   return (
     <Layout style={layoutStyle}>
       <Navbar navigate={navigate} />
@@ -104,61 +118,19 @@ const Home = () => {
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Folklore</h2>
           <div style={scrollableContainerStyle}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
+            {renderStoryCardsByGenre("folklore")}
           </div>
         </div>
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Mythology</h2>
           <div style={scrollableContainerStyle}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
+            {renderStoryCardsByGenre("mythology")}
           </div>
         </div>
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Hystory</h2>
           <div style={scrollableContainerStyle}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
+            {renderStoryCardsByGenre("history")}
           </div>
         </div>
       </Content>
