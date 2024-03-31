@@ -40,7 +40,6 @@ const StoryContainer = ({ language, text }) => {
   });
 
   const getTranslation = (text) => {
-    // Print every word in the dictionary
     for (const key in translationLookup) {
       console.log(key);
     }

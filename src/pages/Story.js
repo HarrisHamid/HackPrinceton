@@ -8,6 +8,7 @@ import StoryContainer from "../components/StoryContainer";
 const Story = () => {
   const [enText, setEnText] = useState("");
   const [chrText, setChrText] = useState("");
+  const [phoneticText, setPhoneticText] = useState("");
   const { storyId } = useParams();
 
   useEffect(() => {
@@ -34,6 +35,13 @@ const Story = () => {
         }
         const chrTextData = await chrResponse.text();
         setChrText(chrTextData);
+
+        const phoneticResponse = await getFile(story.content_phonetic_id);
+        if (!phoneticResponse.ok) {
+          throw new Error("Failed to fetch Phonetic content");
+        }
+        const phoneticTextData = await phoneticResponse.text();
+        setPhoneticText(phoneticTextData);
       } catch (error) {
         console.error("Error fetching story:", error);
       }
@@ -42,8 +50,53 @@ const Story = () => {
     fetchStory();
   }, [storyId]);
 
+  async function googletextTobSpeech(text) {
+    try {
+      const apiKey = process.env.REACT_APP_GOOGLE_TEXT_TO_SPEECH_API_KEY;
+      if (!apiKey || !text) return;
+
+      const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
+
+      const data = {
+        input: {
+          text: text,
+        },
+        voice: {
+          languageCode: "en-gb",
+          name: "en-GB-Standard-A",
+          ssmlGender: "FEMALE",
+        },
+        audioConfig: {
+          audioEncoding: "MP3",
+        },
+      };
+
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      const responseJson = await response.json();
+      const audioBlob = new Blob(
+        [Buffer.from(responseJson.audioContent, "base64")],
+        { type: "audio/mpeg" }
+      );
+      const audioUrl = URL.createObjectURL(audioBlob);
+      return audioUrl;
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
+
   const onPlayClick = () => {
-    console.log("Play button clicked");
+    googletextTobSpeech(phoneticText)
+      .then((audioUrl) => {
+        const audio = new Audio(audioUrl);
+        audio.play();
+      })
+      .catch((error) => {
+        console.error("Error playing audio:", error);
+      });
   };
 
   return (
