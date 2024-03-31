@@ -9,6 +9,7 @@ const Story = () => {
   const [enText, setEnText] = useState("");
   const [chrText, setChrText] = useState("");
   const [phoneticText, setPhoneticText] = useState("");
+  const [highlightIndex, setHighlightIndex] = useState(-1)
   const { storyId } = useParams();
 
   useEffect(() => {
@@ -93,6 +94,20 @@ const Story = () => {
       .then((audioUrl) => {
         const audio = new Audio(audioUrl);
         audio.play();
+
+        const interval = setInterval(() => {
+          const currentTime = audio.currentTime;
+          const duration = audio.duration;
+
+          const newIndex = Math.floor((currentTime / duration) * phoneticText.length);
+          if (newIndex !== highlightIndex) {
+            setHighlightIndex(newIndex);
+          }
+          if (audio.ended) {
+            clearInterval(interval);
+            setHighlightIndex(-1);
+          }
+        }, 1000)
       })
       .catch((error) => {
         console.error("Error playing audio:", error);
