@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Row, Col } from "antd";
+import { Layout, Col } from "antd";
 import { useNavigate } from "react-router";
 import Navbar from "../components/Navbar";
 import StoryCard from "../components/StoryCard";
@@ -65,6 +65,14 @@ const Home = () => {
     marginBottom: "24px",
   };
 
+  const scrollableContainerStyle = {
+    display: "flex",
+    flexDirection: "row",
+    overflowX: "auto",
+    padding: "0 20px",
+    gap: "16px",
+  };
+
   return (
     <Layout style={layoutStyle}>
       <Navbar navigate={navigate} />
@@ -73,27 +81,29 @@ const Home = () => {
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
             Browse all stories
           </h2>
-          <Row gutter={[16, 16]}>
+          <div style={scrollableContainerStyle}>
             {images.length === 0 ? (
               <div>Loading stories...</div>
             ) : (
               stories.map((story) => (
                 <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
+                  <div style={{ display: "inline-block", marginRight: "16px" }}>
+                    <StoryCard
+                      title={story.title}
+                      description={story.description}
+                      image={images.find((img) => img.storyId === story._id)}
+                      navigate={navigate}
+                      storyId={story._id}
+                    />
+                  </div>
                 </Col>
               ))
             )}
-          </Row>
+          </div>
         </div>
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Folklore</h2>
-          <Row gutter={[16, 16]}>
+          <div style={scrollableContainerStyle}>
             {images.length === 0 ? (
               <div>Loading stories...</div>
             ) : (
@@ -109,11 +119,11 @@ const Home = () => {
                 </Col>
               ))
             )}
-          </Row>
+          </div>
         </div>
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Mythology</h2>
-          <Row gutter={[16, 16]}>
+          <div style={scrollableContainerStyle}>
             {images.length === 0 ? (
               <div>Loading stories...</div>
             ) : (
@@ -129,11 +139,11 @@ const Home = () => {
                 </Col>
               ))
             )}
-          </Row>
+          </div>
         </div>
         <div style={sectionStyle}>
           <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Hystory</h2>
-          <Row gutter={[16, 16]}>
+          <div style={scrollableContainerStyle}>
             {images.length === 0 ? (
               <div>Loading stories...</div>
             ) : (
@@ -149,7 +159,7 @@ const Home = () => {
                 </Col>
               ))
             )}
-          </Row>
+          </div>
         </div>
       </Content>
     </Layout>
