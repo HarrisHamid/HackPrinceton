@@ -92,7 +92,7 @@ const Home = () => {
       <Navbar navigate={navigate} />
       <Content style={contentStyle}>
         <div style={sectionStyle}>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
+          <h2 style={{ marginBottom: "20px", textAlign: "left", color: 'navy', fontSize: '24px' }}>
             Browse all stories
           </h2>
           <div style={scrollableContainerStyle}>
@@ -116,19 +116,19 @@ const Home = () => {
           </div>
         </div>
         <div style={sectionStyle}>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Folklore</h2>
+          <h2 style={{ marginBottom: "20px", textAlign: "left", color: 'navy', fontSize: '24px' }}>Folklore</h2>
           <div style={scrollableContainerStyle}>
             {renderStoryCardsByGenre("folklore")}
           </div>
         </div>
         <div style={sectionStyle}>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Mythology</h2>
+          <h2 style={{ marginBottom: "20px", textAlign: "left", color: 'navy', fontSize: '24px'}}>Mythology</h2>
           <div style={scrollableContainerStyle}>
             {renderStoryCardsByGenre("mythology")}
           </div>
         </div>
         <div style={sectionStyle}>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Hystory</h2>
+          <h2 style={{ marginBottom: "20px", textAlign: "left", color: 'navy', fontSize: '24px' }}>Hystory</h2>
           <div style={scrollableContainerStyle}>
             {renderStoryCardsByGenre("history")}
           </div>

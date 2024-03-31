@@ -1,8 +1,7 @@
-import { Card } from 'antd';
-import { useNavigate } from 'react-router';
+import { Card } from "antd";
+import { useNavigate } from "react-router";
 // import { useAuth0 } from "@auth0/auth0-react";
 import Meta from "antd/es/card/Meta";
-
 
 const StoryCard = ({ title, image, storyId }) => {
   const navigate = useNavigate();
@@ -26,7 +25,9 @@ const StoryCard = ({ title, image, storyId }) => {
         cover={<img alt={title} src={image.src} />}
         onClick={handleCardClick}
       >
-        <Meta title={title} />
+        <Meta
+          title={<h2 style={{ fontSize: "20px" }}>{title}</h2>}
+        />
       </Card>
     </>
   );
