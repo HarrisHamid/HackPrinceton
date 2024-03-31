@@ -4,7 +4,7 @@ const API_NAME = "Pyglot API"
 
 export const getAllStories = async () => {
     try {
-        const response = await fetch(`http://localhost:8000/stories/`, {
+        const response = await fetch(`http://18.220.29.105/stories/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
@@ -21,7 +21,7 @@ export const getAllStories = async () => {
 
 export const getStoryById = async (storyId) => {
     try {
-        const response = await fetch(`http://localhost:8000/story/${storyId}`, {
+        const response = await fetch(`http://18.220.29.105/story/${storyId}`, {
             method: "GET",
         });
         return response
@@ -75,7 +75,7 @@ export const deleteStory = async (storyId) => {
 
 export const getFile = async (fileId) => {
     try {
-        const response = await fetch(`http://localhost:8000/file/${fileId}`, {
+        const response = await fetch(`http://18.220.29.105/file/${fileId}`, {
             method: "GET",
         });
         return response
@@ -89,7 +89,7 @@ export const getFile = async (fileId) => {
 
 export const getImage = async (id) => {
     try {
-        const response = await fetch(`http://localhost:8000/resource/${id}`, {
+        const response = await fetch(`http://18.220.29.105/resource/${id}`, {
             method: "GET",
         });
         return response
