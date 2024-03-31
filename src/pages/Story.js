@@ -9,7 +9,7 @@ const Story = () => {
   const [enText, setEnText] = useState("");
   const [chrText, setChrText] = useState("");
   const [phoneticText, setPhoneticText] = useState("");
-  const [highlightIndex, setHighlightIndex] = useState(-1)
+  const [highlightIndex, setHighlightIndex] = useState(-1);
   const { storyId } = useParams();
 
   useEffect(() => {
@@ -54,7 +54,6 @@ const Story = () => {
   async function googletextTobSpeech(text) {
     try {
       const apiKey = process.env.REACT_APP_GOOGLE_TEXT_TO_SPEECH_API_KEY;
-      console.log("API Key:", apiKey);
       if (!apiKey || !text) return;
 
       const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
@@ -79,10 +78,14 @@ const Story = () => {
       });
 
       const responseJson = await response.json();
-      const audioBlob = new Blob(
-        [Buffer.from(responseJson.audioContent, "base64")],
-        { type: "audio/mpeg" }
-      );
+
+      // Convert base64 to a Blob without using Buffer
+      const audioContent = atob(responseJson.audioContent);
+      const audioArray = new Uint8Array(audioContent.length);
+      for (let i = 0; i < audioContent.length; i++) {
+        audioArray[i] = audioContent.charCodeAt(i);
+      }
+      const audioBlob = new Blob([audioArray], { type: "audio/mpeg" });
       const audioUrl = URL.createObjectURL(audioBlob);
       return audioUrl;
     } catch (error) {
@@ -103,7 +106,9 @@ const Story = () => {
           const currentTime = audio.currentTime;
           const duration = audio.duration;
 
-          const newIndex = Math.floor((currentTime / duration) * phoneticText.length);
+          const newIndex = Math.floor(
+            (currentTime / duration) * phoneticText.length
+          );
           if (newIndex !== highlightIndex) {
             setHighlightIndex(newIndex);
           }
@@ -111,7 +116,7 @@ const Story = () => {
             clearInterval(interval);
             setHighlightIndex(-1);
           }
-        }, 1000)
+        }, 1000);
       })
       .catch((error) => {
         console.error("Error playing audio:", error);
