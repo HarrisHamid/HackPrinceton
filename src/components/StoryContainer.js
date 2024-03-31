@@ -20,6 +20,7 @@ const StoryContainer = ({ language, text }) => {
           complete: (results) => {
             const lookup = {};
             results.data.forEach((row) => {
+                console.log(row);
               if (row === undefined) {
                 return;
               }
@@ -39,6 +40,7 @@ const StoryContainer = ({ language, text }) => {
   });
 
   const getTranslation = (text) => {
+    // Print every word in the dictionary
     for (const key in translationLookup) {
       console.log(key);
     }

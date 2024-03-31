@@ -122,6 +122,7 @@ const Story = () => {
         console.error("Error playing audio:", error);
       });
   };
+  
 
   return (
     <div className="story-container">
