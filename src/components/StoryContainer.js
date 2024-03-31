@@ -20,7 +20,6 @@ const StoryContainer = ({ language, text }) => {
           complete: (results) => {
             const lookup = {};
             results.data.forEach((row) => {
-                console.log(row);
               if (row === undefined) {
                 return;
               }
