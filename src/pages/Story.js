@@ -37,7 +37,7 @@ const Story = () => {
         const chrTextData = await chrResponse.text();
         setChrText(chrTextData);
 
-        const phoneticResponse = await getFile(story.content_phonetic_id);
+        const phoneticResponse = await getFile(story.content_pheonetic_id);
         if (!phoneticResponse.ok) {
           throw new Error("Failed to fetch Phonetic content");
         }
@@ -54,6 +54,7 @@ const Story = () => {
   async function googletextTobSpeech(text) {
     try {
       const apiKey = process.env.REACT_APP_GOOGLE_TEXT_TO_SPEECH_API_KEY;
+      console.log("API Key:", apiKey);
       if (!apiKey || !text) return;
 
       const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
@@ -85,13 +86,16 @@ const Story = () => {
       const audioUrl = URL.createObjectURL(audioBlob);
       return audioUrl;
     } catch (error) {
+      console.error("Error converting text to speech:", error);
       throw new Error(error);
     }
   }
 
   const onPlayClick = () => {
+    console.log("Playing audio");
     googletextTobSpeech(phoneticText)
       .then((audioUrl) => {
+        console.log("Playing audio:", audioUrl);
         const audio = new Audio(audioUrl);
         audio.play();
 
