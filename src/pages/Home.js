@@ -47,8 +47,13 @@ const Home = () => {
   const contentStyle = {
     margin: "24px 16px",
     padding: 24,
-    background: "#fff",
+    background:
+      "#fff url('https://cdn.sandersondesigngroup.com/processed-images/products/large/F0808-06.jpg') no-repeat center center",
+    backgroundSize: "cover",
     minHeight: "auto",
+    width: "calc(100% - 48px)",
+    height: "calc(100% - 48px)",
+    overflow: "auto",
   };
 
   return (
