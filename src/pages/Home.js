@@ -56,85 +56,105 @@ const Home = () => {
     overflow: "auto",
   };
 
+  const sectionStyle = {
+    background: "#fff", // White background for readability
+    padding: "20px",
+    borderRadius: "8px", // Optional: adds rounded corners for a softer look
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Optional: adds a subtle shadow for depth
+    marginBottom: "24px", // Ensure some space between sections
+  };
+
   return (
     <Layout style={layoutStyle}>
       <Layout>
         <Navbar navigate={navigate} />
         <Content style={contentStyle}>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
-            Browse all stories
-          </h2>
-          <Row gutter={[16, 16]}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
-          </Row>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Folklore</h2>
-          <Row gutter={[16, 16]}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
-          </Row>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Mythology</h2>
-          <Row gutter={[16, 16]}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
-          </Row>
-          <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Hystory</h2>
-          <Row gutter={[16, 16]}>
-            {images.length === 0 ? (
-              <div>Loading stories...</div>
-            ) : (
-              stories.map((story) => (
-                <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
-                  <StoryCard
-                    title={story.title}
-                    description={story.description}
-                    image={images.find((img) => img.storyId === story._id)}
-                    navigate={navigate}
-                    storyId={story._id}
-                  />
-                </Col>
-              ))
-            )}
-          </Row>
+          <div style={sectionStyle}>
+            <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
+              Browse all stories
+            </h2>
+            <Row gutter={[16, 16]}>
+              {images.length === 0 ? (
+                <div>Loading stories...</div>
+              ) : (
+                stories.map((story) => (
+                  <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
+                    <StoryCard
+                      title={story.title}
+                      description={story.description}
+                      image={images.find((img) => img.storyId === story._id)}
+                      navigate={navigate}
+                      storyId={story._id}
+                    />
+                  </Col>
+                ))
+              )}
+            </Row>
+          </div>
+          <div style={sectionStyle}>
+            <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
+              Folklore
+            </h2>
+            <Row gutter={[16, 16]}>
+              {images.length === 0 ? (
+                <div>Loading stories...</div>
+              ) : (
+                stories.map((story) => (
+                  <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
+                    <StoryCard
+                      title={story.title}
+                      description={story.description}
+                      image={images.find((img) => img.storyId === story._id)}
+                      navigate={navigate}
+                      storyId={story._id}
+                    />
+                  </Col>
+                ))
+              )}
+            </Row>
+          </div>
+          <div style={sectionStyle}>
+            <h2 style={{ marginBottom: "20px", textAlign: "left" }}>
+              Mythology
+            </h2>
+            <Row gutter={[16, 16]}>
+              {images.length === 0 ? (
+                <div>Loading stories...</div>
+              ) : (
+                stories.map((story) => (
+                  <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
+                    <StoryCard
+                      title={story.title}
+                      description={story.description}
+                      image={images.find((img) => img.storyId === story._id)}
+                      navigate={navigate}
+                      storyId={story._id}
+                    />
+                  </Col>
+                ))
+              )}
+            </Row>
+          </div>
+          <div style={sectionStyle}>
+            <h2 style={{ marginBottom: "20px", textAlign: "left" }}>Hystory</h2>
+            <Row gutter={[16, 16]}>
+              {images.length === 0 ? (
+                <div>Loading stories...</div>
+              ) : (
+                stories.map((story) => (
+                  <Col key={story._id} xs={24} sm={12} md={8} lg={6}>
+                    <StoryCard
+                      title={story.title}
+                      description={story.description}
+                      image={images.find((img) => img.storyId === story._id)}
+                      navigate={navigate}
+                      storyId={story._id}
+                    />
+                  </Col>
+                ))
+              )}
+            </Row>
+          </div>
         </Content>
       </Layout>
     </Layout>
