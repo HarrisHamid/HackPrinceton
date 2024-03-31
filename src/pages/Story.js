@@ -63,8 +63,8 @@ const Story = () => {
           text: text,
         },
         voice: {
-          languageCode: "en-gb",
-          name: "en-GB-Standard-A",
+          languageCode: "fi-FI",
+          name: "fi-FI-Standard-A",
           ssmlGender: "FEMALE",
         },
         audioConfig: {
