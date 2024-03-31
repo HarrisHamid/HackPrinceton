@@ -17,12 +17,14 @@ const StoryCard = ({ title, image, storyId }) => {
     // }
   };
 
+  const defaultImageSrc = "https://via.placeholder.com/240"
+
   return (
     <>
       <Card
         hoverable
         style={{ width: 240 }}
-        cover={<img alt={title} src={image.src} />}
+        cover={<img alt={title} src={image?.src || defaultImageSrc} />}
         onClick={handleCardClick}
       >
         <Meta
